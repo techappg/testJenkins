@@ -10,7 +10,7 @@ pipeline {
     stage('build') {
       steps {
         ws(dir: 'container') {
-          git(url: 'https://github.com/paloaltosoft/clearspeed_container.git', branch: 'main', changelog: true, poll: true, credentialsId: 'github_login')
+          git(url: 'https://github.com/paloaltosoft/clearspeed_container.git', branch: 'main', changelog: true, poll: true, credentialsId: 'github')
           sh '''rm -rf clearspeed/.git
 tar -cvzf clearspeed_container.tar.gz clearspeed/'''
         }
