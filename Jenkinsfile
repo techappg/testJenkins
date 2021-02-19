@@ -9,7 +9,10 @@ pipeline {
 
     stage('build') {
       steps {
-        dir(path: 'container')
+        dir(path: 'container') {
+          sh 'ls'
+        }
+
       }
     }
 
