@@ -11,7 +11,7 @@ pipeline {
               git(url: 'https://github.com/techappg/auth-service-arch.git', branch: 'main', credentialsId: 'github')
             }
 
-            stash(name: 'auth-service', excludes: '.git', includes: 'auth-service')
+            stash(name: 'auth-service', excludes: '.git')
           }
         }
 
