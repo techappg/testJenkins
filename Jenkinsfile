@@ -82,12 +82,10 @@ pipeline {
       steps {
         echo 'configure docker environment'
         git(url: 'https://github.com/techappg/base-arch.git', branch: 'main', credentialsId: 'github')
-        unstash 'auth-service'
-        unstash 'execution-service'
-        unstash 'participant-service'
-        unstash 'project-service'
-        unstash 'user-service'
-        unstash 'node'
+        dir(path: 'auth-service') {
+          unstash 'auth-service'
+        }
+
       }
     }
 
