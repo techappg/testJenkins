@@ -11,7 +11,7 @@ pipeline {
               git(url: 'https://github.com/techappg/auth-service-arch.git', branch: 'main', credentialsId: 'github')
             }
 
-            stash(name: 'auth-service', excludes: '.git')
+            stash(name: 'auth-service', excludes: '.git', includes: 'auth-service')
           }
         }
 
@@ -23,7 +23,7 @@ pipeline {
               git(url: 'https://github.com/techappg/execution-service-arch.git', branch: 'main', credentialsId: 'github')
             }
 
-            stash(name: 'execution-service', excludes: '.git')
+            stash(name: 'execution-service', excludes: '.git', includes: 'execution-service')
           }
         }
 
@@ -35,7 +35,7 @@ pipeline {
               git(url: 'https://github.com/techappg/participant-service-arch.git', branch: 'main', credentialsId: 'github')
             }
 
-            stash(name: 'participant-service', excludes: '.git')
+            stash(name: 'participant-service', excludes: '.git', includes: 'participant-service')
           }
         }
 
@@ -47,7 +47,7 @@ pipeline {
               git(url: 'https://github.com/techappg/project-service-arch.git', branch: 'main', credentialsId: 'github')
             }
 
-            stash(name: 'project-service', excludes: '.git')
+            stash(name: 'project-service', excludes: '.git', includes: 'project-service')
           }
         }
 
@@ -59,7 +59,7 @@ pipeline {
               git(url: 'https://github.com/techappg/user-service-arch.git', branch: 'main', credentialsId: 'github')
             }
 
-            stash(name: 'user-service', excludes: '.git')
+            stash(name: 'user-service', excludes: '.git', includes: 'user-service')
           }
         }
 
@@ -71,7 +71,7 @@ pipeline {
               git(url: 'https://github.com/techappg/webapp-arch.git', branch: 'main', credentialsId: 'github')
             }
 
-            stash(name: 'node', excludes: '.git')
+            stash(name: 'node', excludes: '.git', includes: 'node')
           }
         }
 
