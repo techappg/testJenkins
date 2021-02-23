@@ -6,10 +6,12 @@ pipeline {
         stage('Auth service') {
           steps {
             echo 'auth service'
-            sh 'mkdir -p auth-service && cd auth-service'
-            git(url: 'https://github.com/techappg/auth-service-arch.git', branch: 'main', credentialsId: 'github')
-            sh 'cd ..'
-            stash(name: 'auth-service', excludes: '.git/')
+            sh 'mkdir -p auth-service'
+            dir(path: 'auth-service') {
+              git(url: 'https://github.com/techappg/auth-service-arch.git', branch: 'main', credentialsId: 'github')
+            }
+
+            stash(name: 'auth-service', excludes: '.git', includes: 'auth-service')
           }
         }
 
