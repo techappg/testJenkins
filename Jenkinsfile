@@ -109,7 +109,7 @@ pipeline {
 
         }
 
-        sh '''sudo rm -rf clearspeed/.git
+        sh '''sudo rm -rf clearspeed_container/.git
 tar -cvzf clearspeed_container.tar.gz clearspeed_container'''
         stash(name: 'clearspeed_zip', includes: 'clearspeed_container.tar.gz')
       }
