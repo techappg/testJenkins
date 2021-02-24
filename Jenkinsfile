@@ -113,10 +113,16 @@ pipeline {
         stash(name: 'clearspeed_zip', includes: 'clearspeed_container.tar.gz')
       }
     }
+
     stage('Create zip') {
       steps {
         echo 'creating zip....'
         git(url: 'https://github.com/paloaltosoft/clearspeed_aap.git', branch: 'master', changelog: true, poll: true, credentialsId: 'github')
+        dir(path: 'clearspeed') {
+          sh 'rm -rf clearspeed_container.tar.gz'
+          unstash 'clearspeed_zip'
+        }
+
       }
     }
 
