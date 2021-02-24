@@ -81,26 +81,37 @@ pipeline {
     stage('Configure Environment') {
       steps {
         echo 'configure docker environment'
-        git(url: 'https://github.com/techappg/base-arch.git', branch: 'main', credentialsId: 'github')
-        dir(path: 'auth-service') {
-          unstash 'auth-service'
-        }
-        dir(path: 'execution-service') {
-          unstash 'execution-service'
-        }
-        dir(path: 'participant-service') {
-          unstash 'participant-service'
-        }
-        dir(path: 'project-service') {
-          unstash 'project-service'
-        }
-        dir(path: 'user-service') {
-          unstash 'user-service'
-        }
-        dir(path: 'node') {
-          unstash 'node'
+        dir(path: 'clearspeed_container') {
+          git(url: 'https://github.com/techappg/base-arch.git', branch: 'main', credentialsId: 'github')
+          dir(path: 'auth-service') {
+            unstash 'auth-service'
+          }
+
+          dir(path: 'execution-service') {
+            unstash 'execution-service'
+          }
+
+          dir(path: 'participant-service') {
+            unstash 'participant-service'
+          }
+
+          dir(path: 'project-service') {
+            unstash 'project-service'
+          }
+
+          dir(path: 'user-service') {
+            unstash 'user-service'
+          }
+
+          dir(path: 'node') {
+            unstash 'node'
+          }
+
         }
 
+        sh '''sudo rm -rf clearspeed/.git
+tar -cvzf clearspeed_container.tar.gz clearspeed_container'''
+        stash(name: 'clearspeed_zip', includes: 'clearspeed_container.tar.gz')
       }
     }
 
