@@ -109,7 +109,7 @@ pipeline {
 
         }
 
-        sh 'tar -cvzf --exclude=\'./clearspeed_container/.git\' clearspeed_container.tar.gz clearspeed_container'
+        sh 'tar -cvzf --exclude=**/.git/* clearspeed_container.tar.gz clearspeed_container'
         stash(name: 'clearspeed_zip', includes: 'clearspeed_container.tar.gz')
       }
     }
