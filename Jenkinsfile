@@ -85,6 +85,21 @@ pipeline {
         dir(path: 'auth-service') {
           unstash 'auth-service'
         }
+        dir(path: 'execution-service') {
+          unstash 'execution-service'
+        }
+        dir(path: 'participant-service') {
+          unstash 'participant-service'
+        }
+        dir(path: 'project-service') {
+          unstash 'project-service'
+        }
+        dir(path: 'user-service') {
+          unstash 'user-service'
+        }
+        dir(path: 'node') {
+          unstash 'node'
+        }
 
       }
     }
